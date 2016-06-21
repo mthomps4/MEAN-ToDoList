@@ -30,6 +30,20 @@ router.post('/todos', function(req, res){
 });
 
 // ADD PUT ROUTE TO UPDATE EXISTING POSTS
+router.put('/todos/:id', function(req, res){
+  var id = req.params.id;
+  var todo = req.body;
+  if(todo && todo._id !== id){
+    return res.status(500).json({err: "Ids don't match!"});
+  }
+  Todo.findByIdAndUpdate(id, todo, {new:true}, function(err, todo){ //New option says "yes" we want to save the new data
+    if(err){
+      return res.status(500).json({err: err.message});
+    }
+    res.json({'todo': todo, message: "Todo Updated"});
+  });
+});
+
 // ADD DELETE ROUTE TO REMOVE POSTS
 
 module.exports = router;
