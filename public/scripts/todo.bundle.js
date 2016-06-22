@@ -23,7 +23,7 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var angular = __webpack_require__(1); 
+	var angular = __webpack_require__(1);
 
 	angular.module('todoListApp')
 	.controller('mainCtrl', function($scope, dataService){
@@ -34,7 +34,7 @@ webpackJsonp([0],[
 	    });
 
 	  $scope.addTodo = function() {
-	    $scope.todos.unshift({name: "This is a new todo.",
+	    $scope.todos.unshift({name: "<<New Item>>.",
 	                      completed: false});
 	  };
 

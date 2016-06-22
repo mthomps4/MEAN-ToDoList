@@ -1,6 +1,6 @@
 'use strict';
 
-var angular = require('angular'); 
+var angular = require('angular');
 
 angular.module('todoListApp')
 .controller('mainCtrl', function($scope, dataService){
@@ -11,7 +11,7 @@ angular.module('todoListApp')
     });
 
   $scope.addTodo = function() {
-    $scope.todos.unshift({name: "This is a new todo.",
+    $scope.todos.unshift({name: "<<New Item>>.",
                       completed: false});
   };
 
