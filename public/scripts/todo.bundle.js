@@ -50,10 +50,16 @@ webpackJsonp([0],[
 
 	angular.module('todoListApp')
 	.controller('todoCtrl', function($scope, dataService) {
-	  $scope.deleteTodo = function(todo, index) {
-	    $scope.todos.splice(index, 1);
-	    dataService.deleteTodo(todo);
-	  };
+	  // $scope.deleteTodo = function(todo, index) {
+	  //   $scope.todos.splice(index, 1);
+	  //   dataService.deleteTodo(todo);
+	  // };
+
+	  $scope.deleteTodo = function (todo, index) {
+	    dataService.deleteTodo(todo).then(function () {
+	        $scope.todos.splice(index, 1);
+	    });
+	};
 
 	  $scope.saveTodos = function() {
 	    var filteredTodos = $scope.todos.filter(function(todo){
@@ -69,7 +75,7 @@ webpackJsonp([0],[
 	      todo.edited = false;
 	    });
 	  };
-	  
+
 	});
 
 
@@ -104,7 +110,12 @@ webpackJsonp([0],[
 	  };
 
 	  this.deleteTodo = function(todo) {
-	    console.log("I deleted the " + todo.name + " todo!");
+	    if (!todo._id) {
+	        return $q.resolve();
+	    }
+	    return $http.delete('/api/todos/' + todo._id).then(function () {
+	        console.log("I deleted the ''" + todo.name + "' todo!");
+	    });
 	  };
 
 	  this.saveTodos = function(todos) {
