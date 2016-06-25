@@ -6,13 +6,14 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css">
 </head>
 <body ng-app="todoListApp">
-
+  <ng-include src="'templates/navbar.html'"></ng-include>
   <h1>The Growing List of Crap to Finish</h1>
 
   <div class="list" ng-controller="mainCtrl">
     <div class="add">
       <a href="#" ng-click="addTodo()">
-        + Add a New Task</a>
+        + Add a New Task
+      </a>
       </div>
     <todo></todo>
    </div>
