@@ -1,2 +1,2 @@
 # MEAN-ToDoList
-A to do list appication with MEAN stack 
+A to do list application with MEAN stack 
